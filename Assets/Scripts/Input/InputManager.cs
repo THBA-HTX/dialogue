@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 // functions should be mapped to their corresponding controls
 // using a PlayerInput component with Unity Events.
 
-[RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(PlayerInput))] 
 public class InputManager : MonoBehaviour
 {
     private Vector2 moveDirection = Vector2.zero;
@@ -58,29 +58,18 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    public void InteractButtonPressed(InputAction.CallbackContext context)
+    void OnInteract(InputValue context)
     {
-        Debug.Log("Interact pressed");
-        if (context.performed)
-        {
+        Debug.Log("Interact detected in InputManager");
             interactPressed = true;
-        }
-        else if (context.canceled)
-        {
-            interactPressed = false;
-        } 
+
     }
 
-    public void SubmitPressed(InputAction.CallbackContext context)
+    void OnSubmit(InputValue context)
     {
-        if (context.performed)
-        {
-            submitPressed = true;
-        }
-        else if (context.canceled)
-        {
-            submitPressed = false;
-        } 
+        Debug.Log("Submit detected in InputManager");
+        submitPressed = true;
+
     }
 
     public Vector2 GetMoveDirection() 

@@ -9,7 +9,7 @@ public class DialogueTrigger : MonoBehaviour
 {
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
-    private bool playerInRange;
+    private bool playerInRange = false;
 
     [Header("Ink JSCON")]
     [SerializeField] private TextAsset inkJSON;
@@ -35,16 +35,17 @@ public class DialogueTrigger : MonoBehaviour
     }
 
 
+
     // Update is called once per frame
     void Update()
     {
         if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying )
          {
             visualCue.SetActive(true);
-        //    if ( InputManager.GetInstance().GetInteractPressed()) {
-        //        DialogueManager.GetInstance().EnterDialogMode(inkJSON);
-                //Debug.Log(inkJSON.text);
-         //    }
+               if ( InputManager.GetInstance().GetInteractPressed() ) {
+                    DialogueManager.GetInstance().EnterDialogMode(inkJSON);
+                    Debug.Log(inkJSON.text);
+              }
         }
         else {
             visualCue.SetActive(false);

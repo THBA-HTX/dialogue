@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     public void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-        //spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
    
@@ -98,7 +98,6 @@ public class PlayerController : MonoBehaviour
     void OnInteract(InputValue input)
     {
         Debug.Log("Interaction detected");
-       
     }
 
     public void OnEnable()

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour
 {
 
-    private float pickupRadius = 1.0f;
+    // private float pickupRadius = 1.0f;
     public ItemData itemData;
     private  BoxCollider2D collider2;
     private  SpriteRenderer sp;
