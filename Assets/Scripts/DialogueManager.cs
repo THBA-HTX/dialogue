@@ -6,9 +6,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime; // Story
 
-public class DialogManager : MonoBehaviour
+public class DialogueManager : MonoBehaviour
 {
-    private static DialogManager instance;
+    private static DialogueManager instance;
     // UI elements to update during dialog
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel; // for at kunne tilgå dialog panel ..(show and hide)
@@ -32,7 +32,7 @@ public class DialogManager : MonoBehaviour
         //sentences = new Queue<string>();
     }
 
-    public static DialogManager GetInstance() {
+    public static DialogueManager GetInstance() {
         return instance;
     }
 

@@ -6,7 +6,7 @@
             "id": "095b8478-bd7d-427a-89d7-672cffea88f7",
             "actions": [
                 {
-                    "name": "movement",
+                    "name": "Move",
                     "type": "Value",
                     "id": "de7ad6ee-3ffc-4ca6-8836-bb647014fb04",
                     "expectedControlType": "Vector2",
@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "interact",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "8fa27ba8-6ae7-46a6-8766-46464598a93c",
                     "expectedControlType": "Button",
@@ -27,56 +27,56 @@
             "bindings": [
                 {
                     "name": "2D Vector",
-                    "id": "9c83549c-8df6-4eb8-8726-207564c56c5d",
+                    "id": "50d4034f-b268-40f1-a2ca-4f6129a01efd",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "movement",
+                    "action": "Move",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "up",
-                    "id": "7c5008a7-0f98-4c6c-9b2e-bfdcc90b4b80",
+                    "id": "8a25f734-0bae-4cd8-8844-5d78c776ba9b",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "New control scheme",
-                    "action": "movement",
+                    "groups": "MyControls",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "down",
-                    "id": "87d16834-3601-4ffa-a438-608a12395d36",
+                    "id": "57e52658-f3ec-429f-aaed-bdac47405501",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "movement",
+                    "groups": "MyControls",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "left",
-                    "id": "53fc1d95-bb9d-4f20-8463-2948f947d34b",
+                    "id": "dd830eb6-c55f-4262-9e30-263ce079ea66",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "movement",
+                    "groups": "MyControls",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "right",
-                    "id": "bdf8408c-2b5a-4bdc-ae4b-59584cce784a",
+                    "id": "2baf3f50-fd05-4594-ac42-b5809c50af63",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "movement",
+                    "groups": "MyControls",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -86,8 +86,8 @@
                     "path": "<Keyboard>/i",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "interact",
+                    "groups": "MyControls",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -99,6 +99,22 @@
             "name": "New control scheme",
             "bindingGroup": "New control scheme",
             "devices": []
+        },
+        {
+            "name": "MyControls",
+            "bindingGroup": "MyControls",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
         }
     ]
 }

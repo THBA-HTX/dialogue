@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate() {
 
-        _moveInput = _playerActions.PlayerMovement.movement.ReadValue<Vector2>();
+        _moveInput = _playerActions.PlayerMovement.Move.ReadValue<Vector2>();
 
         if(canMove) {
 
@@ -93,6 +93,12 @@ public class PlayerController : MonoBehaviour
     void OnMove(InputValue movementValue) {
         Debug.Log("Event OnMove");
         _moveInput = movementValue.Get<Vector2>();
+    }
+
+    void OnInteract(InputValue input)
+    {
+        Debug.Log("Interaction detected");
+       
     }
 
     public void OnEnable()

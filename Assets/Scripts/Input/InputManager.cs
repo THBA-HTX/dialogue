@@ -17,6 +17,7 @@ public class InputManager : MonoBehaviour
     private bool submitPressed = false;
 
     private static InputManager instance;
+    
 
     private void Awake()
     {
@@ -34,6 +35,7 @@ public class InputManager : MonoBehaviour
 
     public void MovePressed(InputAction.CallbackContext context)
     {
+        Debug.Log("Interact pressed");
         if (context.performed)
         {
             moveDirection = context.ReadValue<Vector2>();
@@ -58,6 +60,7 @@ public class InputManager : MonoBehaviour
 
     public void InteractButtonPressed(InputAction.CallbackContext context)
     {
+        Debug.Log("Interact pressed");
         if (context.performed)
         {
             interactPressed = true;
