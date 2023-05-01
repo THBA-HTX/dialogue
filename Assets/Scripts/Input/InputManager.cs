@@ -61,15 +61,13 @@ public class InputManager : MonoBehaviour
     void OnInteract(InputValue context)
     {
         Debug.Log("Interact detected in InputManager");
-            interactPressed = true;
-
+        interactPressed = true;
     }
 
     void OnSubmit(InputValue context)
     {
         Debug.Log("Submit detected in InputManager");
         submitPressed = true;
-
     }
 
     public Vector2 GetMoveDirection() 
