@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
-
 public class DialogueTrigger : MonoBehaviour
 {
     [Header("Visual Cue")]
@@ -35,15 +33,18 @@ public class DialogueTrigger : MonoBehaviour
     }
 
 
-
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Dialog is not playing... and in range");
         if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying )
          {
+            Debug.Log("Dialog is not playing... and in range");
             visualCue.SetActive(true);
-               if ( InputManager.GetInstance().GetInteractPressed() ) {
-                    DialogueManager.GetInstance().EnterDialogMode(inkJSON);
+            Debug.Log("Set active true");
+            if ( InputManager.GetInstance().GetInteractPressed() ) {
+                Debug.Log(" interact pressed");
+                DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
                     Debug.Log(inkJSON.text);
               }
         }

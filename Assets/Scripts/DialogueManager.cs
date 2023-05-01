@@ -49,20 +49,19 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void EnterDialogMode(TextAsset inkJSON) {
+    public void EnterDialogueMode(TextAsset inkJSON) {
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
 
         ContinueStory();
-
-
     }
-        private void ExitDialogueMode() {
-            dialogueIsPlaying = false;
-            dialoguePanel.SetActive(false);
-            dialogueText.text = "";
-        }
+
+    private void ExitDialogueMode() {
+        dialogueIsPlaying = false;
+        dialoguePanel.SetActive(false);
+        dialogueText.text = "";
+    }
 
     public void Update() {
         // Hvis der ikke er en dialog igang så exit(return) med det samme.
