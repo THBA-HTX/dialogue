@@ -10,11 +10,14 @@ public class PlayerController : MonoBehaviour
     public Vector2 _moveInput;
     public Rigidbody2D _rb;
     public float collisionOffset = 0.05f;
+    private Collider2D collider;
 
     public ContactFilter2D movementFilter;
     SpriteRenderer spriteRenderer;
     Animator animator;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
+
+    public SwordAttack swordAttack;
 
     private bool canMove = true;
 
@@ -27,6 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        collider = GetComponent<Collider2D>();
     }
 
    
@@ -53,15 +57,32 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
-        } 
+        }
 
-        //    // Set direction of sprite to movement direction
-        //    if(movementInput.x < 0) {
-        //        spriteRenderer.flipX = true;
-        //    } else if (movementInput.x > 0) {
-        //        spriteRenderer.flipX = false;
-        //    }
-        //}
+        // Set direction of sprite to movement direction
+        if (_moveInput.x < 0)
+        {
+            if (spriteRenderer.flipX == false) {
+                FlipCollider();
+            }
+
+            spriteRenderer.flipX = true;
+            swordAttack.attackDirection = SwordAttack.AttackDirection.LEFT;
+        }
+        else if (_moveInput.x > 0)
+        {
+            if (spriteRenderer.flipX == true)
+            {
+                FlipCollider();
+            }
+
+            spriteRenderer.flipX = false;
+            swordAttack.attackDirection = SwordAttack.AttackDirection.RIGHT;
+        }
+    
+}
+    void FlipCollider() {
+        collider.offset = new Vector3(collider.offset.x * -1, collider.offset.y);
     }
 
     private bool TryMove(Vector2 direction) {
@@ -90,14 +111,15 @@ public class PlayerController : MonoBehaviour
         }        
     }
 
+    public void Attack() {
+        LockMovement();
+        swordAttack.Attack();
+        UnlockMovement();
+    }
+
     void OnMove(InputValue movementValue) {
         Debug.Log("Event OnMove");
         _moveInput = movementValue.Get<Vector2>();
-    }
-
-    void OnInteract(InputValue input)
-    {
-        Debug.Log("Interaction detected");
     }
 
     public void OnEnable()
