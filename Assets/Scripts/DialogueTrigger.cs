@@ -42,7 +42,8 @@ public class DialogueTrigger : MonoBehaviour
             Debug.Log("Dialog is not playing... and in range");
             visualCue.SetActive(true);
             Debug.Log("Set active true");
-            if ( InputManager.GetInstance().GetInteractPressed() ) {
+            if (InputManager.GetInstance().GetInteractPressed())
+            {
                 Debug.Log(" interact pressed");
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
                     Debug.Log(inkJSON.text);

@@ -15,6 +15,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText; // for at kunne ændre text i dialog
     private Story currentStory; // Hvilken story er vi at vise/fortælle
     public bool dialogueIsPlaying { get; private set; } // Er der en dialog igen eller ej.
+    private DialogueVariables dialogueVariables;
 
     //==== VALG FRA PLAYER ==============================================================================================
     [Header("Choices UI")]
@@ -30,6 +31,7 @@ public class DialogueManager : MonoBehaviour
             Debug.Log("Dialogmanager has more than one instance ...");
         instance = this;
         //sentences = new Queue<string>();
+        dialogueVariables = new DialogueVariables();
     }
 
     public static DialogueManager GetInstance() {
@@ -54,6 +56,8 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
 
+        dialogueVariables.StartListening(currentStory);
+
         ContinueStory();
     }
 
@@ -61,6 +65,8 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
+
+        dialogueVariables.StopListening(currentStory);
     }
 
     public void Update() {

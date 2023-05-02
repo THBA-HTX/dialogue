@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         collider = GetComponent<Collider2D>();
+        animator = GetComponent<Animator>();
     }
 
    
@@ -62,15 +63,18 @@ public class PlayerController : MonoBehaviour
         // Set direction of sprite to movement direction
         if (_moveInput.x < 0)
         {
-            if (spriteRenderer.flipX == false) {
+            if (spriteRenderer.flipX == false)
+            {
                 FlipCollider();
             }
 
             spriteRenderer.flipX = true;
+            animator.SetBool("isWalking", true);
             swordAttack.attackDirection = SwordAttack.AttackDirection.LEFT;
         }
         else if (_moveInput.x > 0)
         {
+            animator.SetBool("isWalking", true);
             if (spriteRenderer.flipX == true)
             {
                 FlipCollider();
@@ -78,6 +82,9 @@ public class PlayerController : MonoBehaviour
 
             spriteRenderer.flipX = false;
             swordAttack.attackDirection = SwordAttack.AttackDirection.RIGHT;
+        }
+        else {
+            animator.SetBool("isWalking", false);
         }
     
 }
