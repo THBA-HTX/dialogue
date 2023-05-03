@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime; // Story
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -53,9 +54,16 @@ public class DialogueManager : MonoBehaviour
 
     public void EnterDialogueMode(TextAsset inkJSON) {
         currentStory = new Story(inkJSON.text);
+
+        // binder ekstern funktion til Ink script  ( skal man unbinde dette ? )
+        currentStory.BindExternalFunction("LoadSceneFromInk", (int sceneNr) => {
+            SceneManager.LoadScene(sceneNr);
+        });
+
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
 
+        // Kobler story til dialogVariabller klassen.
         dialogueVariables.StartListening(currentStory);
 
         ContinueStory();
